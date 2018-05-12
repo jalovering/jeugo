@@ -16,7 +16,11 @@ import static javax.swing.JSplitPane.RIGHT;
 
 public class Controller {
 
+    final static int MOVE_SPEED = 2;
+    final static int RUN_FACTOR = 2;
+
     boolean running, goNorth, goSouth, goEast, goWest;
+
 
     @FXML
     private Circle player;
@@ -26,7 +30,17 @@ public class Controller {
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                movePlayer(1,1);
+                int dx = 0;
+                int dy = 0;
+                if (goNorth) dy = -MOVE_SPEED;
+                if (goSouth) dy = MOVE_SPEED;
+                if (goEast) dx = MOVE_SPEED;
+                if (goWest) dx = -MOVE_SPEED;
+                if (running) {
+                    dx *= RUN_FACTOR;
+                    dy *= RUN_FACTOR;
+                }
+                movePlayer(dx, dy);
             }
         };
         timer.start();
@@ -46,16 +60,48 @@ public class Controller {
 
     @FXML
     private void handleKeyPressed(KeyEvent event) {
-        player.setRadius(400);
-
-        System.out.println(event.getCode());
+        switch (event.getCode()) {
+            case UP:
+                goNorth = true;
+                break;
+            case DOWN:
+                goSouth = true;
+                break;
+            case LEFT:
+                goWest = true;
+                break;
+            case RIGHT:
+                goEast = true;
+                break;
+            case SHIFT:
+                running = true;
+                break;
+            default:
+                // fall through
+        }
     }
 
     @FXML
     private void handleKeyReleased(KeyEvent event) {
-        player.setRadius(50);
-
-        System.out.println(event.getCode());
+        switch (event.getCode()) {
+            case UP:
+                goNorth = false;
+                break;
+            case DOWN:
+                goSouth = false;
+                break;
+            case LEFT:
+                goWest = false;
+                break;
+            case RIGHT:
+                goEast = false;
+                break;
+            case SHIFT:
+                running = false;
+                break;
+            default:
+                // fall through
+        }
     }
 
 }
