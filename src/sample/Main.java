@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -15,6 +16,7 @@ public class Main extends Application {
         primaryStage.setTitle("Juego");
         primaryStage.setScene(new Scene(root, 800, 800, Color.WHITE));
         primaryStage.show();
+
     }
 
 
