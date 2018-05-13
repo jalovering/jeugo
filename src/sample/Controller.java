@@ -1,18 +1,10 @@
 package sample;
 
 import javafx.animation.AnimationTimer;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.Circle;
-
-import static java.math.RoundingMode.DOWN;
-import static java.math.RoundingMode.UP;
-import static javafx.scene.input.KeyCode.SHIFT;
-import static javax.swing.JSplitPane.LEFT;
-import static javax.swing.JSplitPane.RIGHT;
 
 public class Controller {
 
@@ -21,11 +13,13 @@ public class Controller {
 
     boolean running, goNorth, goSouth, goEast, goWest;
 
-
     @FXML
     private Circle player;
 
-    public void initialize(){
+    @FXML
+    private BorderPane pane;
+
+    public void initialize() {
 
         AnimationTimer timer = new AnimationTimer() {
             @Override
@@ -48,60 +42,62 @@ public class Controller {
 
     /**
      * Moves player given deltas.
+     *
      * @param dx change in x direction.
      * @param dy change in y direction.
      */
     private void movePlayer(int dx, int dy) {
-        double x = player.getCenterX();
-        double y = player.getCenterY();
-        player.setCenterX(x+dx);
-        player.setCenterY(y+dy);
+        double x = player.getCenterX() + dx;
+        double y = player.getCenterY() + dy;
+        if(x >= pane.getWidth() - player.getRadius()) return;
+        if(y >= pane.getHeight() - player.getRadius()) return;
+        if(x <= 0 + player.getRadius()) return;
+        if(y <= 0 + player.getRadius()) return;
+        player.setCenterX(x);
+        player.setCenterY(y);
     }
 
     @FXML
     private void handleKeyPressed(KeyEvent event) {
-        switch (event.getCode()) {
-            case UP:
-                goNorth = true;
-                break;
-            case DOWN:
-                goSouth = true;
-                break;
-            case LEFT:
-                goWest = true;
-                break;
-            case RIGHT:
-                goEast = true;
-                break;
-            case SHIFT:
-                running = true;
-                break;
-            default:
-                // fall through
-        }
+        handleKeyEvent(event, true);
     }
 
     @FXML
     private void handleKeyReleased(KeyEvent event) {
+        handleKeyEvent(event, false);
+    }
+
+    /**
+     * moves player based on presed key
+     *
+     * @param event KeyEvent
+     * @param state true/false to determine
+     */
+    private void handleKeyEvent(KeyEvent event, boolean state){
         switch (event.getCode()) {
             case UP:
-                goNorth = false;
+            case W:
+                goNorth = state;
                 break;
             case DOWN:
-                goSouth = false;
+            case S:
+                goSouth = state;
                 break;
             case LEFT:
-                goWest = false;
+            case A:
+                goWest = state;
                 break;
             case RIGHT:
-                goEast = false;
+            case D:
+                goEast = state;
                 break;
             case SHIFT:
-                running = false;
+                running = state;
                 break;
             default:
-                // fall through
+                // Ignore other keys.
         }
+
     }
 
 }
