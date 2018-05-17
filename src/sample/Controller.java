@@ -49,10 +49,10 @@ public class Controller {
     private void movePlayer(int dx, int dy) {
         double x = player.getCenterX() + dx;
         double y = player.getCenterY() + dy;
-        if(x >= pane.getWidth() - player.getRadius()) return;
-        if(y >= pane.getHeight() - player.getRadius()) return;
-        if(x <= 0 + player.getRadius()) return;
-        if(y <= 0 + player.getRadius()) return;
+        if (x >= pane.getWidth() - player.getRadius()) return;
+        if (y >= pane.getHeight() - player.getRadius()) return;
+        if (x <= 0 + player.getRadius()) return;
+        if (y <= 0 + player.getRadius()) return;
         player.setCenterX(x);
         player.setCenterY(y);
     }
