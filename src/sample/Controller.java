@@ -49,6 +49,7 @@ public class Controller {
     private void movePlayer(int dx, int dy) {
         double x = player.getCenterX() + dx;
         double y = player.getCenterY() + dy;
+        // TODO{jalovering}: move these conditions into a helper function.
         if (x >= pane.getWidth() - player.getRadius()) return;
         if (y >= pane.getHeight() - player.getRadius()) return;
         if (x <= 0 + player.getRadius()) return;
@@ -97,7 +98,6 @@ public class Controller {
             default:
                 // Ignore other keys.
         }
-
     }
 
 }
