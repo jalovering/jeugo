@@ -1,27 +1,21 @@
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
-
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.BorderPane?>
-<BorderPane fx:id="pane" fx:controller="sample.Controller"
-            xmlns:fx="http://javafx.com/fxml"
-            onKeyPressed="#handleKeyPressed"
-            onKeyReleased="#handleKeyReleased"
+<?import javafx.scene.shape.Circle?>
+
+<BorderPane 
+  fx:id="pane"
+  fx:controller="sample.Controller"
+  xmlns:fx="http://javafx.com/fxml"
+  onKeyPressed="#handleKeyPressed"
+  onKeyReleased="#handleKeyReleased"
 >
-
-    <Circle fx:id="player" centerX="50" centerY="50" strokeWidth="1.5" stroke="#1f9ec5" fill="#47b5e4"
-            radius="20"
-    >
-    </Circle>
-
-    <!--<Circle fx:id="enemy1" centerX="400" centerY="20" strokeWidth="1.5" stroke="#dd0800" fill="#e41914"-->
-            <!--radius="30">-->
-    <!--</Circle>-->
-
+  <Circle 
+    fx:id="player"
+    centerX="50" 
+    centerY="50" 
+    strokeWidth="1.5" 
+    stroke="#1f9ec5" 
+    fill="#47b5e4"
+    radius="20"
+  >
+  </Circle>
 </BorderPane>
