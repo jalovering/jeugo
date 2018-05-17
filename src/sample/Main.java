@@ -20,7 +20,6 @@ public class Main extends Application {
         scene.getRoot().requestFocus();
         primaryStage.setScene(scene);
         primaryStage.show();
-
     }
 
     public static void main(String[] args) {
