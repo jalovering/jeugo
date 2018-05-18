@@ -15,10 +15,10 @@ public class Controller {
     boolean running, goNorth, goSouth, goEast, goWest;
 
     @FXML
-    private Circle player;
+    private Unit player;
 
     @FXML
-    private Circle enemy;
+    private Unit enemy;
 
     @FXML
     private BorderPane pane;
@@ -28,6 +28,7 @@ public class Controller {
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
+               //todo getplayerdirection function    returns direction
                 int dx = 0;
                 int dy = 0;
                 if (goNorth) dy = -MOVE_SPEED;
@@ -38,28 +39,11 @@ public class Controller {
                     dx *= RUN_FACTOR;
                     dy *= RUN_FACTOR;
                 }
-                movePlayer(dx, dy);
+                player.move(new Direction(dx, dy), pane);
+                enemy.move(new Direction(dx, dy), pane);
             }
         };
         timer.start();
-    }
-
-    /**
-     * Moves player given deltas.
-     *
-     * @param dx change in x direction.
-     * @param dy change in y direction.
-     */
-    private void movePlayer(int dx, int dy) {
-        double x = player.getCenterX() + dx;
-        double y = player.getCenterY() + dy;
-        // TODO{jalovering}: move these conditions into a helper function.
-        if (x >= pane.getWidth() - player.getRadius()) return;
-        if (y >= pane.getHeight() - player.getRadius()) return;
-        if (x <= 0 + player.getRadius()) return;
-        if (y <= 0 + player.getRadius()) return;
-        player.setCenterX(x);
-        player.setCenterY(y);
     }
 
     private void moveEnemy(){

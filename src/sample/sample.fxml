@@ -1,33 +1,33 @@
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.shape.Circle?>
+<?import sample.Unit?>
 
-<BorderPane 
-  fx:id="pane"
-  fx:controller="sample.Controller"
-  xmlns:fx="http://javafx.com/fxml"
-  onKeyPressed="#handleKeyPressed"
-  onKeyReleased="#handleKeyReleased"
+<BorderPane
+        fx:id="pane"
+        fx:controller="sample.Controller"
+        xmlns:fx="http://javafx.com/fxml"
+        onKeyPressed="#handleKeyPressed"
+        onKeyReleased="#handleKeyReleased"
 >
-  <Circle 
-    fx:id="player"
-    centerX="50" 
-    centerY="50" 
-    strokeWidth="1.5" 
-    stroke="#1f9ec5" 
-    fill="#47b5e4"
-    radius="20"
-  >
+    <Unit
+            fx:id="player"
+            centerX="50"
+            centerY="50"
+            strokeWidth="1.5"
+            stroke="#1f9ec5"
+            fill="#47b5e4"
+            radius="20"
+    >
 
-  </Circle>
+    </Unit>
 
-    <Circle
-            fx:id="enemy1"
+    <Unit
+            fx:id="enemy"
             centerX="80"
-            centerY="20"
+            centerY="40"
             strokeWidth="1.5"
             stroke="#cb0800"
             fill="#e42f35"
             radius="25">
-    </Circle>
+    </Unit>
 
 </BorderPane>
