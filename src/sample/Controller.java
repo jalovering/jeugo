@@ -2,6 +2,7 @@ package sample;
 
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.Circle;
@@ -15,6 +16,9 @@ public class Controller {
 
     @FXML
     private Circle player;
+
+    @FXML
+    private Circle enemy;
 
     @FXML
     private BorderPane pane;
@@ -58,6 +62,11 @@ public class Controller {
         player.setCenterY(y);
     }
 
+    private void moveEnemy(){
+
+    }
+
+
     @FXML
     private void handleKeyPressed(KeyEvent event) {
         handleKeyEvent(event, true);
@@ -98,6 +107,14 @@ public class Controller {
             default:
                 // Ignore other keys.
         }
+    }
+
+    private void contactDeath(){
+        if(player.getCenterX() + player.getRadius() == enemy.getCenterX() + enemy.getRadius()){
+            // restart scene
+        }
+
+
     }
 
 }
