@@ -1,6 +1,8 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import sample.Unit?>
 
+<?import sample.Player?>
+<?import sample.Enemy?>
 <BorderPane
         fx:id="pane"
         fx:controller="sample.Controller"
@@ -8,7 +10,7 @@
         onKeyPressed="#handleKeyPressed"
         onKeyReleased="#handleKeyReleased"
 >
-    <Unit
+    <Player
             fx:id="player"
             centerX="50"
             centerY="50"
@@ -18,9 +20,9 @@
             radius="20"
     >
 
-    </Unit>
+    </Player>
 
-    <Unit
+    <Enemy
             fx:id="enemy"
             centerX="80"
             centerY="40"
@@ -28,6 +30,6 @@
             stroke="#cb0800"
             fill="#e42f35"
             radius="25">
-    </Unit>
+    </Enemy>
 
 </BorderPane>

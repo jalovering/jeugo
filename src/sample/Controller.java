@@ -2,10 +2,8 @@ package sample;
 
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.shape.Circle;
 
 public class Controller {
 
@@ -15,10 +13,10 @@ public class Controller {
     boolean running, goNorth, goSouth, goEast, goWest;
 
     @FXML
-    private Unit player;
+    private Player player;
 
     @FXML
-    private Unit enemy;
+    private Enemy enemy;
 
     @FXML
     private BorderPane pane;
@@ -40,7 +38,7 @@ public class Controller {
                     dy *= RUN_FACTOR;
                 }
                 player.move(new Direction(dx, dy), pane);
-                enemy.move(new Direction(dx, dy), pane);
+                enemy.move(pane);
             }
         };
         timer.start();
