@@ -7,6 +7,8 @@ import javafx.scene.layout.BorderPane;
 
 public class Controller {
 
+    // TODO(jalovering): move these constants inside the player class. These are the stats of the player, so 
+    // they should be *inside* the player class, not the controller.
     final static int MOVE_SPEED = 2;
     final static int RUN_FACTOR = 2;
 
@@ -27,6 +29,7 @@ public class Controller {
             @Override
             public void handle(long now) {
                //todo getplayerdirection function    returns direction
+                // TODO(jalovering): move this logic inside player, similar to the move in enemy.
                 int dx = 0;
                 int dy = 0;
                 if (goNorth) dy = -MOVE_SPEED;
@@ -51,14 +54,17 @@ public class Controller {
 
     @FXML
     private void handleKeyPressed(KeyEvent event) {
+        // TODO(jalovering): (3) call the handleKeyEvent from player, i.e. player.handleKeyEvent(...)
         handleKeyEvent(event, true);
     }
 
     @FXML
     private void handleKeyReleased(KeyEvent event) {
+        // TODO(jalovering): (3) call the handleKeyEvent from player, i.e. player.handleKeyEvent(...)
         handleKeyEvent(event, false);
     }
 
+    // TODO(jalovering): (2) move handleKeyEvent inside Player.
     /**
      * moves player based on presed key
      *
